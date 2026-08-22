@@ -1,0 +1,59 @@
+{
+  "dataset": "Mehedi2",
+  "cleanDataset": "Mehedi2-clean",
+  "datasetPath": "dataset/Mehedi2",
+  "cleanDatasetPath": "dataset/Mehedi2-clean",
+  "rebuildDate": "2026-08-22",
+  "seed": 42,
+  "inputSize": [224, 224],
+  "strategy": "stratified",
+  "trainRatio": 0.70,
+  "validationRatio": 0.15,
+  "testRatio": 0.15,
+  "classes": ["cercospora", "healthy", "mites_and_trips", "nutritional", "powdery mildew"],
+  "classCount": 5,
+  "originalCount": 13335,
+  "duplicateGroupsFound": 3,
+  "duplicatesRemoved": 2361,
+  "uniqueCount": 10974,
+  "splits": {
+    "train": 7679,
+    "validation": 1644,
+    "test": 1651
+  },
+  "classDistribution": {
+    "cercospora":      { "train": 1551, "validation": 332, "test": 334 },
+    "healthy":         { "train": 1536, "validation": 329, "test": 330 },
+    "mites_and_trips": { "train": 1752, "validation": 375, "test": 377 },
+    "nutritional":     { "train": 1420, "validation": 304, "test": 305 },
+    "powdery mildew":  { "train": 1420, "validation": 304, "test": 305 }
+  },
+  "leakageVerification": {
+    "method": "SHA-256 full scan on all copied files",
+    "trainValOverlap": 0,
+    "trainTestOverlap": 0,
+    "valTestOverlap": 0,
+    "result": "PASS"
+  },
+  "preprocessingStrategy": {
+    "train": {
+      "resize": [256, 256],
+      "randomCrop": [224, 224],
+      "augmentation": ["RandomHorizontalFlip_p0.5","RandomVerticalFlip_p0.3","RandomRotation_15deg","ColorJitter_b0.2_c0.2_s0.1_h0.05"],
+      "normalize": { "mean": [0.485, 0.456, 0.406], "std": [0.229, 0.224, 0.225] },
+      "augmentationApplied": "runtime_only"
+    },
+    "validation": {
+      "resize": [256, 256],
+      "centerCrop": [224, 224],
+      "augmentation": [],
+      "normalize": { "mean": [0.485, 0.456, 0.406], "std": [0.229, 0.224, 0.225] }
+    },
+    "test": {
+      "resize": [256, 256],
+      "centerCrop": [224, 224],
+      "augmentation": [],
+      "normalize": { "mean": [0.485, 0.456, 0.406], "std": [0.229, 0.224, 0.225] }
+    }
+  }
+}

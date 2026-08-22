@@ -1,0 +1,166 @@
+{
+  "auditDate": "2026-08-22",
+  "workspace": "C:\\Users\\Public\\Documents\\Circulens\\dataset\\",
+  "datasets": [
+    {
+      "datasetName": "Chilli Plant Diseases Dataset",
+      "folderName": "Chilli Plant Diseases Dataset",
+      "source": "Kaggle",
+      "license": "License not verified.",
+      "taskType": "image-classification",
+      "labelType": "single-label",
+      "imageFormat": "jpg",
+      "classes": [
+        "Chilli __Whitefly",
+        "Chilli __Yellowish",
+        "Chilli___healthy",
+        "Chilli__Anthracnos",
+        "Chilli__Damping_Off",
+        "Chilli__Leaf_Curl_Virus",
+        "Chilli__Leaf_Spot",
+        "Chilli__Veinal_Mottle_Virus"
+      ],
+      "classCount": 8,
+      "imageCount": 6755,
+      "split": {
+        "train": 6163,
+        "validation": 479,
+        "test": 113
+      },
+      "splitFolderNames": {
+        "train": "train",
+        "validation": "valid",
+        "test": "test"
+      },
+      "classCountPerSplit": {
+        "train": {
+          "Chilli __Whitefly": 500,
+          "Chilli __Yellowish": 500,
+          "Chilli___healthy": 1565,
+          "Chilli__Anthracnos": 430,
+          "Chilli__Damping_Off": 168,
+          "Chilli__Leaf_Curl_Virus": 500,
+          "Chilli__Leaf_Spot": 500,
+          "Chilli__Veinal_Mottle_Virus": 2000
+        },
+        "validation": {
+          "Chilli __Whitefly": 10,
+          "Chilli __Yellowish": 10,
+          "Chilli___healthy": 365,
+          "Chilli__Anthracnos": 54,
+          "Chilli__Damping_Off": 10,
+          "Chilli__Leaf_Curl_Virus": 10,
+          "Chilli__Leaf_Spot": 10,
+          "Chilli__Veinal_Mottle_Virus": 10
+        },
+        "test": {
+          "Chilli __Whitefly": 10,
+          "Chilli __Yellowish": 10,
+          "Chilli___healthy": 10,
+          "Chilli__Anthracnos": 43,
+          "Chilli__Damping_Off": 10,
+          "Chilli__Leaf_Curl_Virus": 10,
+          "Chilli__Leaf_Spot": 10,
+          "Chilli__Veinal_Mottle_Virus": 10
+        }
+      },
+      "recommendedModule": "Module A — Plant Monitoring",
+      "qualityIssues": [
+        "Folder naming inconsistency: 'Chilli __Whitefly' and 'Chilli __Yellowish' have a leading space before double underscore — must be normalised in data loader",
+        "Label noise in Chilli__Veinal_Mottle_Virus — sample filenames contain 'Nutrition Deficiency' prefix suggesting mislabelled images",
+        "Data leakage detected — identical filenames found in both train and valid splits for Damping_Off and Anthracnos classes",
+        "Severe class imbalance: Chilli__Damping_Off (188 total) vs Chilli__Veinal_Mottle_Virus (2,020 total) — ratio 10.7:1",
+        "Very small test set (113 images total) limits statistical significance of evaluation"
+      ],
+      "limitations": [
+        "Does not cover fruit maturity, harvest stage, or post-harvest quality — not usable for Module B or C",
+        "Geographic and cultivar diversity unknown",
+        "License not verified — confirm before competition or commercial use"
+      ]
+    },
+    {
+      "datasetName": "Mehedi2",
+      "folderName": "Mehedi2",
+      "source": "Kaggle",
+      "license": "License not verified.",
+      "taskType": "image-classification",
+      "labelType": "single-label",
+      "imageFormat": "jpg",
+      "classes": [
+        "cercospora",
+        "healthy",
+        "mites_and_trips",
+        "nutritional",
+        "powdery mildew"
+      ],
+      "classCount": 5,
+      "imageCount": 13335,
+      "split": {
+        "train": 8915,
+        "validation": 2195,
+        "test": 2225
+      },
+      "splitFolderNames": {
+        "train": "train",
+        "validation": "val",
+        "test": "test"
+      },
+      "classCountPerSplit": {
+        "train": {
+          "cercospora": 2021,
+          "healthy": 1995,
+          "mites_and_trips": 2059,
+          "nutritional": 1420,
+          "powdery mildew": 1420
+        },
+        "validation": {
+          "cercospora": 602,
+          "healthy": 610,
+          "mites_and_trips": 375,
+          "nutritional": 304,
+          "powdery mildew": 304
+        },
+        "test": {
+          "cercospora": 621,
+          "healthy": 617,
+          "mites_and_trips": 377,
+          "nutritional": 305,
+          "powdery mildew": 305
+        }
+      },
+      "recommendedModule": "Module A — Plant Monitoring",
+      "recommendedForMVP": true,
+      "qualityIssues": [
+        "Folder name 'powdery mildew' contains a space — handle in data loader path construction",
+        "Mild class imbalance: nutritional and powdery mildew (~2,029 each) are approximately 30% smaller than cercospora/healthy (~3,200 each)"
+      ],
+      "limitations": [
+        "Does not cover fruit maturity, harvest stage, or post-harvest quality — not usable for Module B or C",
+        "Geographic and cultivar diversity unknown",
+        "License not verified — confirm before competition or commercial use"
+      ]
+    }
+  ],
+  "combinedStats": {
+    "totalImages": 20090,
+    "totalClasses": 13,
+    "uniqueConditionsCovered": [
+      "healthy (baseline)",
+      "fungal disease — anthracnose",
+      "fungal disease — cercospora leaf spot",
+      "fungal disease — powdery mildew",
+      "viral disease — leaf curl",
+      "viral disease — veinal mottle (label quality uncertain)",
+      "pest damage — whitefly",
+      "pest damage — mites and thrips",
+      "symptom — leaf yellowing",
+      "symptom — nutritional deficiency",
+      "disease — damping-off (seedling stage only)"
+    ],
+    "modulesSupported": ["Module A"],
+    "modulesNotSupported": ["Module B", "Module C"],
+    "primaryRecommendedDataset": "Mehedi2",
+    "primaryRecommendedArchitecture": "MobileNetV2",
+    "primaryRecommendedInputSize": "224x224"
+  }
+}
