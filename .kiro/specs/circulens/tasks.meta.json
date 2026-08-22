@@ -1,0 +1,422 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1.1 Scaffold the Vite + React + TypeScript project with Tailwind CSS": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324651130
+      },
+      {
+        "executionId": "a778df4a-aa63-4990-bc32-4e863cb1c877",
+        "chatSessionId": "sess_e480a1b2-c05e-4e2f-b379-8d44e8c201d6",
+        "timestamp": 1787324921542
+      }
+    ],
+    "1.2 Define all shared TypeScript types and enums in `src/types/index.ts`": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324671342
+      },
+      {
+        "executionId": "a778df4a-aa63-4990-bc32-4e863cb1c877",
+        "chatSessionId": "sess_e480a1b2-c05e-4e2f-b379-8d44e8c201d6",
+        "timestamp": 1787324932592
+      }
+    ],
+    "1.3 Implement `src/utils/batchId.ts` — UUID-based Batch ID generation": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324673924
+      }
+    ],
+    "1.4 Implement `src/utils/trendAnalysis.ts` — monitoring trend derivation": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324676747
+      }
+    ],
+    "1.5 Write property test for `deriveTrend` (Property 6)": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324684635
+      }
+    ],
+    "2.1 Implement `src/services/modelLoader.ts` — model weight loading and Cache API management": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324688513
+      }
+    ],
+    "2.2 Implement `src/services/inferenceService.ts` — AI inference abstraction": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324689247
+      }
+    ],
+    "2.3 Implement `src/services/contextFusion.ts` — context data escalation": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324691867
+      }
+    ],
+    "2.4 Write property test for `fuseContext` (Property 12)": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324692880
+      }
+    ],
+    "2.5 Implement `src/services/decisionEngine.ts` — pure decision pipeline": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324695698
+      }
+    ],
+    "2.6 Write property test for `deriveDecision` — risk enum validity (Property 8)": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324696795
+      }
+    ],
+    "2.7 Write property test for `deriveDecision` — risk-to-priority mapping (Property 9)": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324697608
+      }
+    ],
+    "2.8 Write property test for `deriveDecision` — explainability non-empty (Property 10)": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324699618
+      }
+    ],
+    "2.9 Write property test for `deriveDecision` — role-appropriate actions (Property 11)": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324700416
+      }
+    ],
+    "2.10 Implement `src/services/storageService.ts` — Supabase CRUD wrapper": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324702038
+      }
+    ],
+    "2.11 Write property test for `storageService` — persistence round-trip (Property 19)": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324703696
+      }
+    ],
+    "2.12 Write property test for `storageService` — user scoping (Property 14)": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324704878
+      }
+    ],
+    "2.13 Write property test for timestamps — valid ISO dates (Property 13)": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324705828
+      }
+    ],
+    "3. Checkpoint — Ensure all service-layer tests pass": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324710523
+      }
+    ],
+    "4.1 Implement `src/context/RoleContext.tsx` — role state and module access": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324715912
+      }
+    ],
+    "4.2 Write property test for `RoleContext` — role-aware module access (Property 1)": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324720698
+      }
+    ],
+    "4.3 Implement `src/hooks/useInference.ts`": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324722929
+      }
+    ],
+    "4.4 Implement `src/hooks/useObservations.ts`": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324727734
+      }
+    ],
+    "4.5 Implement `src/hooks/useBatchAssessments.ts`": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324728819
+      }
+    ],
+    "4.6 Implement shared UI components in `src/components/shared/`": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324732574
+      }
+    ],
+    "5.1 Implement `src/components/RoleSelector/RoleSelector.tsx`": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324752102
+      }
+    ],
+    "5.2 Implement `src/App.tsx` and `src/main.tsx`": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324760820
+      }
+    ],
+    "5.3 Write property test for role change — data preservation (Property 2)": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324769270
+      }
+    ],
+    "6.1 Implement `src/components/ModuleA/PlantMonitor.tsx`": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324777568
+      }
+    ],
+    "6.2 Implement `src/components/ModuleA/PlantResultPanel.tsx`": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324784540
+      }
+    ],
+    "6.3 Write property test for `PlantResultPanel` — result completeness (Property 4)": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324787896
+      }
+    ],
+    "6.4 Write property test for `PlantResultPanel` — Prototype AI badge presence (Property 3)": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324797180
+      }
+    ],
+    "6.5 Write property test for `PlantResultPanel` — no accuracy percentage claims (Property 15)": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324800481
+      }
+    ],
+    "6.6 Write property test for `PlantMonitor` / `PlantResultPanel` — loading indicator accessibility (Property 16)": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324803444
+      }
+    ],
+    "7.1 Implement `src/components/ModuleB/GrowthTimeline.tsx`": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324810778
+      }
+    ],
+    "7.2 Implement `src/components/ModuleB/MonitoringTrendCard.tsx`": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324824802
+      }
+    ],
+    "7.3 Implement `src/components/ModuleB/HarvestReadinessCard.tsx`": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324829356
+      }
+    ],
+    "7.4 Write property test for `GrowthTimeline` — chronological ordering (Property 5)": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324836194
+      }
+    ],
+    "7.5 Write property test for `HarvestReadinessCard` — qualitative-only output (Property 7)": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324838422
+      }
+    ],
+    "8.1 Implement `src/components/ModuleC/BatchAssessment.tsx`": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324846494
+      }
+    ],
+    "8.2 Implement `src/components/ModuleC/BatchResultPanel.tsx`": [
+      {
+        "executionId": "a778df4a-aa63-4990-bc32-4e863cb1c877",
+        "chatSessionId": "sess_e480a1b2-c05e-4e2f-b379-8d44e8c201d6",
+        "timestamp": 1787324847685
+      },
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324849882
+      }
+    ],
+    "8.3 Write property test for `BatchResultPanel` — result completeness (Property 18)": [
+      {
+        "executionId": "a778df4a-aa63-4990-bc32-4e863cb1c877",
+        "chatSessionId": "sess_e480a1b2-c05e-4e2f-b379-8d44e8c201d6",
+        "timestamp": 1787324851945
+      },
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324858038
+      }
+    ],
+    "8.4 Write property test for `BatchResultPanel` — risk severity CSS classes (Property 17)": [
+      {
+        "executionId": "a778df4a-aa63-4990-bc32-4e863cb1c877",
+        "chatSessionId": "sess_e480a1b2-c05e-4e2f-b379-8d44e8c201d6",
+        "timestamp": 1787324865449
+      },
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324871026
+      }
+    ],
+    "9.1 Implement `src/components/ModuleD/DecisionPanel.tsx`": [
+      {
+        "executionId": "a778df4a-aa63-4990-bc32-4e863cb1c877",
+        "chatSessionId": "sess_e480a1b2-c05e-4e2f-b379-8d44e8c201d6",
+        "timestamp": 1787324875462
+      },
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324876585
+      }
+    ],
+    "10. Checkpoint — Ensure all module tests pass": [
+      {
+        "executionId": "a778df4a-aa63-4990-bc32-4e863cb1c877",
+        "chatSessionId": "sess_e480a1b2-c05e-4e2f-b379-8d44e8c201d6",
+        "timestamp": 1787324878743
+      },
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324880572
+      }
+    ],
+    "11.1 Apply Tailwind CSS responsive layout across all components": [
+      {
+        "executionId": "a778df4a-aa63-4990-bc32-4e863cb1c877",
+        "chatSessionId": "sess_e480a1b2-c05e-4e2f-b379-8d44e8c201d6",
+        "timestamp": 1787324881109
+      },
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324882425
+      }
+    ],
+    "11.2 Apply the color palette and typography hierarchy": [
+      {
+        "executionId": "a778df4a-aa63-4990-bc32-4e863cb1c877",
+        "chatSessionId": "sess_e480a1b2-c05e-4e2f-b379-8d44e8c201d6",
+        "timestamp": 1787324884336
+      },
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324885834
+      }
+    ],
+    "12.1 Configure client-side routing in `App.tsx`": [
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324890257
+      }
+    ],
+    "12.2 Connect `useObservations` and `useBatchAssessments` to Supabase via `StorageService`": [
+      {
+        "executionId": "a778df4a-aa63-4990-bc32-4e863cb1c877",
+        "chatSessionId": "sess_e480a1b2-c05e-4e2f-b379-8d44e8c201d6",
+        "timestamp": 1787324892986
+      },
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324893768
+      }
+    ],
+    "12.3 Wire the `ModelLoader` startup sequence into `App.tsx`": [
+      {
+        "executionId": "a778df4a-aa63-4990-bc32-4e863cb1c877",
+        "chatSessionId": "sess_e480a1b2-c05e-4e2f-b379-8d44e8c201d6",
+        "timestamp": 1787324894251
+      },
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324895192
+      }
+    ],
+    "13. Final checkpoint — Ensure all tests pass": [
+      {
+        "executionId": "a778df4a-aa63-4990-bc32-4e863cb1c877",
+        "chatSessionId": "sess_e480a1b2-c05e-4e2f-b379-8d44e8c201d6",
+        "timestamp": 1787324898282
+      },
+      {
+        "executionId": "ddf4124e-b985-4235-89a8-b09cf1c34686",
+        "chatSessionId": "sess_2d933d93-9c9f-4d35-85be-1fdd3787bff5",
+        "timestamp": 1787324899254
+      }
+    ]
+  }
+}
