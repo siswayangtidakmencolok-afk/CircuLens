@@ -44,3 +44,10 @@ imgcheck_result.txt
 progs.txt
 pycheck*.txt
 pycmd*.txt
+
+# Local training environment
+training/venv/
+training/__pycache__/
+*_out.txt
+*_err.txt
+*.cmd
