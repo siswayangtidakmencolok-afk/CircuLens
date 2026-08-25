@@ -3,7 +3,7 @@ import { analyzeImage } from '../services/aiService'
 import type { AIResult } from '../services/aiService'
 
 interface NewBatchProps {
-  onComplete: (result: AIResult, batchName: string) => void
+  onComplete: (result: AIResult, batchName: string, quantity: string) => void
 }
 
 export default function NewBatch({ onComplete }: NewBatchProps) {
@@ -37,7 +37,7 @@ export default function NewBatch({ onComplete }: NewBatchProps) {
     if (!file) return
     setStep('analyzing')
     const result = await analyzeImage(file)
-    onComplete(result, batchName || 'Batch Baru')
+    onComplete(result, batchName || 'Batch Baru', quantity)
   }
 
   // ── Analyzing state ────────────────────────────────────────────────────────

@@ -3,19 +3,27 @@ import type { AIResult } from '../services/aiService'
 interface AssessmentResultProps {
   result: AIResult
   batchName: string
+  batchId: string
+  quantity: string
   onBack: () => void
   onViewScenarios: () => void
+  onSaveBatch: (pathway: string) => void
 }
 
-const conditionColors = {
+const conditionColors: Record<string, string> = {
   Fresh:       'bg-green-50 border-green-200 text-green-800',
   Moderate:    'bg-amber-50 border-amber-200 text-amber-800',
   'High Risk': 'bg-red-50 border-red-200 text-red-800',
 }
 
-export default function AssessmentResult({ result, batchName, onBack, onViewScenarios }: AssessmentResultProps) {
-  const conditionCls = conditionColors[result.condition]
-  const batchId = `CHL-${Date.now().toString().slice(-6)}`
+export default function AssessmentResult({
+  result, batchName, batchId, quantity,
+  onBack, onViewScenarios, onSaveBatch,
+}: AssessmentResultProps) {
+  const conditionCls = conditionColors[result.condition] ?? conditionColors['Moderate']
+  const estimatedLossKg = quantity
+    ? `${((parseFloat(quantity) * result.lossExposure) / 100).toFixed(1)} kg`
+    : '—'
 
   return (
     <main className="flex-1 p-md md:p-xl overflow-y-auto">
@@ -25,7 +33,9 @@ export default function AssessmentResult({ result, batchName, onBack, onViewScen
         <div>
           <h2 className="text-headline-lg font-bold text-on-surface mb-xs">Hasil Analisis</h2>
           <p className="text-body-md text-secondary">
-            Batch: <span className="font-mono font-semibold">{batchId}</span> — {batchName}
+            Batch: <span className="font-mono font-semibold">{batchId}</span>
+            {batchName ? ` — ${batchName}` : ''}
+            {quantity ? ` · ${quantity} kg` : ''}
           </p>
         </div>
         <div className="flex gap-sm flex-wrap">
@@ -35,6 +45,13 @@ export default function AssessmentResult({ result, batchName, onBack, onViewScen
           >
             <span className="material-symbols-outlined text-sm">arrow_back</span>
             Analisis Baru
+          </button>
+          <button
+            onClick={() => onSaveBatch(result.recommendedPathway)}
+            className="border border-primary text-primary px-lg py-sm rounded-full text-body-sm font-semibold hover:bg-primary/10 transition-colors flex items-center gap-xs"
+          >
+            <span className="material-symbols-outlined text-sm">save</span>
+            Simpan Batch
           </button>
           <button
             onClick={onViewScenarios}
@@ -57,9 +74,10 @@ export default function AssessmentResult({ result, batchName, onBack, onViewScen
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-lg">
 
-        {/* Left: condition + confidence */}
+        {/* Left */}
         <div className="lg:col-span-5 flex flex-col gap-lg">
-          {/* Condition card */}
+
+          {/* Condition */}
           <div className={`rounded-DEFAULT border-2 p-lg flex items-center gap-lg ${conditionCls}`}>
             <div className="w-16 h-16 rounded-full bg-white/60 flex items-center justify-center shrink-0">
               <span className="text-3xl">
@@ -72,7 +90,7 @@ export default function AssessmentResult({ result, batchName, onBack, onViewScen
             </div>
           </div>
 
-          {/* Metrics */}
+          {/* Metrics grid */}
           <div className="bg-surface-container-lowest border border-outline-variant rounded-DEFAULT p-lg shadow-sm grid grid-cols-2 gap-md">
             <div className="flex flex-col gap-xs p-md bg-surface-container-low rounded-DEFAULT">
               <span className="text-label-md text-secondary flex items-center gap-xs">
@@ -99,7 +117,9 @@ export default function AssessmentResult({ result, batchName, onBack, onViewScen
             </div>
             <div className="h-3 bg-surface-container rounded-full overflow-hidden">
               <div
-                className={`h-full rounded-full transition-all ${result.riskScore > 70 ? 'bg-error' : result.riskScore > 40 ? 'bg-amber-400' : 'bg-primary'}`}
+                className={`h-full rounded-full transition-all ${
+                  result.riskScore > 70 ? 'bg-error' : result.riskScore > 40 ? 'bg-amber-400' : 'bg-primary'
+                }`}
                 style={{ width: `${result.riskScore}%` }}
               />
             </div>
@@ -107,9 +127,26 @@ export default function AssessmentResult({ result, batchName, onBack, onViewScen
               <span>Low</span><span>Medium</span><span>High</span>
             </div>
           </div>
+
+          {/* Quantity / Loss Exposure */}
+          {quantity && (
+            <div className="bg-surface-container-lowest border border-outline-variant rounded-DEFAULT p-lg shadow-sm">
+              <h4 className="text-body-md font-semibold text-on-surface mb-md">Quantity & Loss Exposure</h4>
+              <div className="grid grid-cols-2 gap-md">
+                <div className="p-md bg-surface-container-low rounded-DEFAULT">
+                  <p className="text-label-md text-secondary">Kuantitas Batch</p>
+                  <p className="text-headline-sm font-bold text-on-surface mt-xs">{quantity} kg</p>
+                </div>
+                <div className="p-md bg-error-container/20 rounded-DEFAULT">
+                  <p className="text-label-md text-error">Est. Kerugian</p>
+                  <p className="text-headline-sm font-bold text-error mt-xs">~{estimatedLossKg}</p>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
 
-        {/* Right: explanations + recommendation */}
+        {/* Right */}
         <div className="lg:col-span-7 flex flex-col gap-lg">
 
           {/* AI Reasoning */}
@@ -146,16 +183,16 @@ export default function AssessmentResult({ result, batchName, onBack, onViewScen
             </p>
           </div>
 
-          {/* Circular pathway buttons */}
+          {/* Pathway buttons */}
           <div className="bg-surface-container-lowest border border-outline-variant rounded-DEFAULT p-lg shadow-sm">
             <h3 className="text-headline-sm font-semibold text-on-surface mb-md">Pilih Jalur</h3>
             <div className="grid grid-cols-3 sm:grid-cols-5 gap-sm">
               {[
-                { label: 'Jual',    icon: '🛒', recommended: result.recommendedPathway.includes('Pasar') },
-                { label: 'Simpan',  icon: '❄️', recommended: result.recommendedPathway.includes('Simpan') || result.recommendedPathway.includes('Monitor') },
-                { label: 'Proses',  icon: '🏭', recommended: result.recommendedPathway.includes('Olah') },
-                { label: 'Redirect',icon: '↗️', recommended: false },
-                { label: 'Kompos',  icon: '♻️', recommended: false },
+                { label: 'Jual',     icon: '🛒', recommended: result.recommendedPathway.includes('Pasar') || result.recommendedPathway.includes('Jual') },
+                { label: 'Simpan',   icon: '❄️', recommended: result.recommendedPathway.includes('Simpan') || result.recommendedPathway.includes('Monitor') },
+                { label: 'Proses',   icon: '🏭', recommended: result.recommendedPathway.includes('Olah') },
+                { label: 'Redirect', icon: '↗️', recommended: false },
+                { label: 'Kompos',   icon: '♻️', recommended: false },
               ].map(p => (
                 <button
                   key={p.label}
