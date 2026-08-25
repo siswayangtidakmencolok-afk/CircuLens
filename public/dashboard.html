@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>CircuLens - Dashboard</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "secondary": "#545f73", "on-error-container": "#93000a",
+          "secondary-container": "#d5e0f8", "outline-variant": "#bccabb",
+          "on-tertiary": "#ffffff", "error-container": "#ffdad6",
+          "surface": "#f8f9ff", "primary": "#006d36",
+          "surface-container-low": "#eff4ff", "surface-container-lowest": "#ffffff",
+          "tertiary": "#006591", "on-tertiary-container": "#00567d",
+          "on-surface-variant": "#3d4a3e", "on-surface": "#0b1c30",
+          "outline": "#6d7b6d", "primary-container": "#4ade80",
+          "on-error": "#ffffff", "on-primary": "#ffffff", "error": "#ba1a1a",
+          "inverse-primary": "#4de082", "background": "#f8f9ff",
+          "surface-container-high": "#dce9ff", "surface-container": "#e5eeff",
+          "on-secondary-container": "#586377", "surface-variant": "#d3e4fe",
+          "on-primary-container": "#005e2d", "surface-dim": "#cbdbf5",
+          "surface-container-highest": "#d3e4fe", "tertiary-container": "#83ccff",
+          "on-background": "#0b1c30",
+        },
+        borderRadius: { DEFAULT: "1rem", lg: "2rem", xl: "3rem", full: "9999px" },
+        fontFamily: { sans: ["Inter","sans-serif"] },
+      },
+    },
+  }
+  </script>
+  <style>
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24; }
+  .material-symbols-outlined.fill { font-variation-settings: 'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24; }
+  body { font-family: 'Inter', sans-serif; }
+  .elevation-1 { box-shadow: 0 4px 6px -1px rgb(0 0 0/0.05),0 2px 4px -2px rgb(0 0 0/0.05); }
+  </style>
+</head>
+<body class="bg-background text-on-background h-full flex flex-col">
+
+  <!-- Layout wrapper -->
+  <div class="flex flex-1 min-h-0">
+
+    <!-- Sidebar (desktop) -->
+    <aside class="hidden md:flex flex-col w-64 bg-surface-container-lowest border-r border-outline-variant shrink-0">
+      <!-- Logo -->
+      <div class="flex items-center gap-3 px-6 py-5 border-b border-outline-variant">
+        <span class="material-symbols-outlined text-primary text-3xl fill">eco</span>
+        <span class="font-bold text-xl text-on-surface tracking-tight">CircuLens</span>
+      </div>
+      <!-- Nav -->
+      <nav class="flex-1 py-4 flex flex-col gap-1">
+        <a href="./dashboard.html" class="flex items-center gap-3 px-5 py-3 text-sm text-primary font-bold border-r-4 border-primary bg-surface-container-low transition-all">
+          <span class="material-symbols-outlined fill text-lg">dashboard</span> Dashboard
+        </a>
+        <a href="./assessment.html" class="flex items-center gap-3 px-5 py-3 text-sm text-secondary hover:bg-surface-container-low transition-all">
+          <span class="material-symbols-outlined text-lg">add_circle</span> Analisis Baru
+        </a>
+        <a href="./history.html" class="flex items-center gap-3 px-5 py-3 text-sm text-secondary hover:bg-surface-container-low transition-all">
+          <span class="material-symbols-outlined text-lg">layers</span> Batch
+        </a>
+        <a href="./history.html" class="flex items-center gap-3 px-5 py-3 text-sm text-secondary hover:bg-surface-container-low transition-all">
+          <span class="material-symbols-outlined text-lg">history</span> Riwayat
+        </a>
+        <a href="./scenario.html" class="flex items-center gap-3 px-5 py-3 text-sm text-secondary hover:bg-surface-container-low transition-all">
+          <span class="material-symbols-outlined text-lg">fork_right</span> Rekomendasi
+        </a>
+        <a href="#" class="flex items-center gap-3 px-5 py-3 text-sm text-secondary hover:bg-surface-container-low transition-all">
+          <span class="material-symbols-outlined text-lg">settings</span> Pengaturan
+        </a>
+      </nav>
+      <!-- Prototype badge -->
+      <div class="px-4 py-3 border-t border-outline-variant">
+        <span class="text-xs bg-amber-100 text-amber-700 px-2 py-1 rounded font-semibold">⚗️ Prototype AI — Demo Mode</span>
+      </div>
+    </aside>
+
+    <!-- Main area -->
+    <div class="flex flex-col flex-1 min-w-0 overflow-auto">
+
+      <!-- Top bar (mobile) -->
+      <header class="md:hidden flex items-center justify-between px-4 py-3 bg-surface-container-lowest border-b border-outline-variant sticky top-0 z-10">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary fill">eco</span>
+          <span class="font-bold text-on-surface">CircuLens</span>
+        </div>
+        <span class="text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded font-semibold">⚗️ Demo</span>
+      </header>
+
+      <!-- Main content -->
+      <main class="flex-1 p-6 md:p-8 flex flex-col gap-6">
+
+        <!-- Page header -->
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <div>
+            <h1 class="text-2xl font-bold text-on-surface">Selamat datang, Admin Desa 🌱</h1>
+            <p class="text-sm text-on-surface-variant mt-1">Pantau kondisi batch cabai dan ambil tindakan berbasis data.</p>
+          </div>
+          <a href="./assessment.html" class="inline-flex items-center gap-2 bg-primary text-on-primary px-4 py-2 rounded-full text-sm font-semibold hover:bg-primary/90 transition-colors self-start sm:self-auto">
+            <span class="material-symbols-outlined text-base">add</span> Analisis Batch Baru
+          </a>
+        </div>
+
+        <!-- KPI Cards -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <!-- Total Batch -->
+          <div class="bg-surface-container-lowest rounded-2xl p-5 elevation-1 flex flex-col gap-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-on-surface-variant uppercase tracking-wide">Total Batch</span>
+              <span class="material-symbols-outlined text-primary text-xl">inventory_2</span>
+            </div>
+            <p class="text-3xl font-bold text-on-surface">142</p>
+            <p class="text-xs text-primary font-medium">+12 minggu ini</p>
+          </div>
+          <!-- Risiko Tinggi -->
+          <div class="bg-red-50 rounded-2xl p-5 elevation-1 flex flex-col gap-2 border border-red-100">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-red-600 uppercase tracking-wide">Risiko Tinggi</span>
+              <span class="material-symbols-outlined text-red-500 text-xl">warning</span>
+            </div>
+            <p class="text-3xl font-bold text-red-700">18</p>
+            <p class="text-xs text-red-500 font-medium">batch kritis</p>
+          </div>
+          <!-- Perlu Tindakan -->
+          <div class="bg-amber-50 rounded-2xl p-5 elevation-1 flex flex-col gap-2 border border-amber-100">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-amber-600 uppercase tracking-wide">Perlu Tindakan</span>
+              <span class="material-symbols-outlined text-amber-500 text-xl">priority_high</span>
+            </div>
+            <p class="text-3xl font-bold text-amber-700">5</p>
+            <p class="text-xs text-amber-600 font-medium">segera proses</p>
+          </div>
+          <!-- Estimasi Loss -->
+          <div class="bg-surface-container-lowest rounded-2xl p-5 elevation-1 flex flex-col gap-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-on-surface-variant uppercase tracking-wide">Estimasi Loss</span>
+              <span class="material-symbols-outlined text-tertiary text-xl">trending_down</span>
+            </div>
+            <p class="text-3xl font-bold text-on-surface">12%</p>
+            <p class="text-xs text-primary font-medium">-2% vs bln lalu</p>
+          </div>
+        </div>
+
+        <!-- Bottom grid: Table + Charts -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+          <!-- Analisis Terbaru -->
+          <div class="lg:col-span-2 bg-surface-container-lowest rounded-2xl elevation-1 overflow-hidden">
+            <div class="flex items-center justify-between px-6 py-4 border-b border-outline-variant">
+              <h2 class="font-semibold text-on-surface">Analisis Terbaru</h2>
+              <a href="./history.html" class="text-xs text-primary font-medium hover:underline">Lihat semua →</a>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm">
+                <thead class="bg-surface-container text-on-surface-variant text-xs uppercase tracking-wide">
+                  <tr>
+                    <th class="px-6 py-3 text-left font-semibold">Batch ID</th>
+                    <th class="px-6 py-3 text-left font-semibold">Tanggal</th>
+                    <th class="px-6 py-3 text-left font-semibold">Risiko</th>
+                    <th class="px-6 py-3 text-left font-semibold">Rekomendasi</th>
+                    <th class="px-6 py-3 text-left font-semibold"></th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-outline-variant/40">
+                  <tr class="hover:bg-surface-container-low transition-colors">
+                    <td class="px-6 py-4 font-mono font-semibold text-on-surface">#B-492</td>
+                    <td class="px-6 py-4 text-on-surface-variant">2 Jul 2025</td>
+                    <td class="px-6 py-4">
+                      <span class="inline-flex items-center gap-1 bg-red-100 text-red-700 text-xs font-bold px-2.5 py-1 rounded-full">
+                        <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span> Tinggi
+                      </span>
+                    </td>
+                    <td class="px-6 py-4 text-on-surface-variant">Olah Pasta</td>
+                    <td class="px-6 py-4">
+                      <a href="./assessment.html" class="text-primary text-xs font-semibold hover:underline">Lihat →</a>
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-surface-container-low transition-colors">
+                    <td class="px-6 py-4 font-mono font-semibold text-on-surface">#B-491</td>
+                    <td class="px-6 py-4 text-on-surface-variant">1 Jul 2025</td>
+                    <td class="px-6 py-4">
+                      <span class="inline-flex items-center gap-1 bg-green-100 text-green-700 text-xs font-bold px-2.5 py-1 rounded-full">
+                        <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> Rendah
+                      </span>
+                    </td>
+                    <td class="px-6 py-4 text-on-surface-variant">Pasar Segar</td>
+                    <td class="px-6 py-4">
+                      <a href="./assessment.html" class="text-primary text-xs font-semibold hover:underline">Lihat →</a>
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-surface-container-low transition-colors">
+                    <td class="px-6 py-4 font-mono font-semibold text-on-surface">#B-490</td>
+                    <td class="px-6 py-4 text-on-surface-variant">30 Jun 2025</td>
+                    <td class="px-6 py-4">
+                      <span class="inline-flex items-center gap-1 bg-amber-100 text-amber-700 text-xs font-bold px-2.5 py-1 rounded-full">
+                        <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Sedang
+                      </span>
+                    </td>
+                    <td class="px-6 py-4 text-on-surface-variant">Pengeringan</td>
+                    <td class="px-6 py-4">
+                      <a href="./assessment.html" class="text-primary text-xs font-semibold hover:underline">Lihat →</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Right column: Donut + Tren -->
+          <div class="flex flex-col gap-5">
+
+            <!-- Distribusi Risiko -->
+            <div class="bg-surface-container-lowest rounded-2xl elevation-1 p-5">
+              <h2 class="font-semibold text-on-surface mb-4">Distribusi Risiko</h2>
+              <!-- CSS Donut Chart -->
+              <div class="flex items-center justify-center mb-4">
+                <div class="relative w-32 h-32">
+                  <svg viewBox="0 0 36 36" class="w-32 h-32 -rotate-90">
+                    <!-- Background circle -->
+                    <circle cx="18" cy="18" r="15.9" fill="none" stroke="#e5eeff" stroke-width="4"/>
+                    <!-- Rendah 65% -->
+                    <circle cx="18" cy="18" r="15.9" fill="none" stroke="#4ade80" stroke-width="4"
+                      stroke-dasharray="65 35" stroke-linecap="round"/>
+                    <!-- Sedang 22% -->
+                    <circle cx="18" cy="18" r="15.9" fill="none" stroke="#fbbf24" stroke-width="4"
+                      stroke-dasharray="22 78" stroke-dashoffset="-65" stroke-linecap="round"/>
+                    <!-- Tinggi 13% -->
+                    <circle cx="18" cy="18" r="15.9" fill="none" stroke="#f87171" stroke-width="4"
+                      stroke-dasharray="13 87" stroke-dashoffset="-87" stroke-linecap="round"/>
+                  </svg>
+                  <div class="absolute inset-0 flex flex-col items-center justify-center rotate-0">
+                    <span class="text-xl font-bold text-on-surface">142</span>
+                    <span class="text-[10px] text-on-surface-variant">batch</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-col gap-2 text-xs">
+                <div class="flex items-center justify-between">
+                  <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-green-400 inline-block"></span> Rendah</span>
+                  <span class="font-bold text-on-surface">65%</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-400 inline-block"></span> Sedang</span>
+                  <span class="font-bold text-on-surface">22%</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-red-400 inline-block"></span> Tinggi</span>
+                  <span class="font-bold text-on-surface">13%</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tren Risiko Mingguan -->
+            <div class="bg-surface-container-lowest rounded-2xl elevation-1 p-5 flex-1">
+              <h2 class="font-semibold text-on-surface mb-3">Tren Risiko Mingguan</h2>
+              <!-- Bar chart placeholder -->
+              <div class="flex items-end gap-2 h-20">
+                <div class="flex flex-col items-center gap-1 flex-1">
+                  <div class="w-full bg-green-300 rounded-t" style="height:45%"></div>
+                  <span class="text-[9px] text-on-surface-variant">M1</span>
+                </div>
+                <div class="flex flex-col items-center gap-1 flex-1">
+                  <div class="w-full bg-amber-300 rounded-t" style="height:60%"></div>
+                  <span class="text-[9px] text-on-surface-variant">M2</span>
+                </div>
+                <div class="flex flex-col items-center gap-1 flex-1">
+                  <div class="w-full bg-green-300 rounded-t" style="height:38%"></div>
+                  <span class="text-[9px] text-on-surface-variant">M3</span>
+                </div>
+                <div class="flex flex-col items-center gap-1 flex-1">
+                  <div class="w-full bg-red-300 rounded-t" style="height:80%"></div>
+                  <span class="text-[9px] text-on-surface-variant">M4</span>
+                </div>
+                <div class="flex flex-col items-center gap-1 flex-1">
+                  <div class="w-full bg-amber-300 rounded-t" style="height:55%"></div>
+                  <span class="text-[9px] text-on-surface-variant">M5</span>
+                </div>
+                <div class="flex flex-col items-center gap-1 flex-1">
+                  <div class="w-full bg-green-400 rounded-t" style="height:35%"></div>
+                  <span class="text-[9px] text-on-surface-variant">M6</span>
+                </div>
+              </div>
+              <p class="text-[10px] text-on-surface-variant mt-2 text-center italic">6 minggu terakhir</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Rekomendasi Prioritas -->
+        <div>
+          <h2 class="font-semibold text-on-surface mb-3">Rekomendasi Prioritas</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="bg-red-50 border border-red-200 rounded-2xl p-5 flex gap-4">
+              <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-red-500 text-xl">warning</span>
+              </div>
+              <div>
+                <p class="font-semibold text-red-700 text-sm">Batch #B-492 — Proses Segera</p>
+                <p class="text-xs text-red-600 mt-1">Risiko kehilangan nilai tinggi. Disarankan olah menjadi pasta dalam 12 jam ke depan.</p>
+                <a href="./assessment.html" class="inline-block mt-2 text-xs text-primary font-semibold hover:underline">Lihat Detail →</a>
+              </div>
+            </div>
+            <div class="bg-amber-50 border border-amber-200 rounded-2xl p-5 flex gap-4">
+              <div class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-amber-500 text-xl">schedule</span>
+              </div>
+              <div>
+                <p class="font-semibold text-amber-700 text-sm">5 Batch Menunggu Review</p>
+                <p class="text-xs text-amber-600 mt-1">Belum ada keputusan penanganan. Periksa dan tentukan jalur dalam 24 jam.</p>
+                <a href="./history.html" class="inline-block mt-2 text-xs text-primary font-semibold hover:underline">Lihat Riwayat →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </main>
+
+      <!-- Footer -->
+      <footer class="flex justify-between items-center w-full px-8 py-3 bg-surface-container-low border-t border-outline-variant mt-auto">
+        <p class="text-xs font-bold text-on-surface opacity-80 flex items-center gap-2">
+          CircuLens AI Assessment Mode: <span class="bg-primary/20 text-primary px-2 py-0.5 rounded text-[10px]">Active</span>
+          | <span class="text-amber-600 font-semibold">⚗️ Prototype AI — Demo Mode</span>
+        </p>
+        <ul class="flex gap-4 text-xs text-on-surface-variant opacity-80">
+          <li><a href="#" class="hover:underline hover:text-primary">Support</a></li>
+          <li><a href="#" class="hover:underline hover:text-primary">Docs</a></li>
+          <li><a href="#" class="hover:underline hover:text-primary">Privacy</a></li>
+        </ul>
+      </footer>
+
+    </div>
+  </div>
+
+  <!-- Mobile bottom nav -->
+  <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-surface-container-lowest border-t border-outline-variant flex justify-around items-center py-2 z-20">
+    <a href="./dashboard.html" class="flex flex-col items-center gap-0.5 text-primary">
+      <span class="material-symbols-outlined fill text-xl">dashboard</span>
+      <span class="text-[10px] font-bold">Dashboard</span>
+    </a>
+    <a href="./assessment.html" class="flex flex-col items-center gap-0.5 text-secondary">
+      <span class="material-symbols-outlined text-xl">add_circle</span>
+      <span class="text-[10px]">Analisis</span>
+    </a>
+    <a href="./history.html" class="flex flex-col items-center gap-0.5 text-secondary">
+      <span class="material-symbols-outlined text-xl">history</span>
+      <span class="text-[10px]">Riwayat</span>
+    </a>
+    <a href="./scenario.html" class="flex flex-col items-center gap-0.5 text-secondary">
+      <span class="material-symbols-outlined text-xl">fork_right</span>
+      <span class="text-[10px]">Skenario</span>
+    </a>
+  </nav>
+
+</body>
+</html>

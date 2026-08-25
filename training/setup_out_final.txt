@@ -1,0 +1,235 @@
+﻿=== run_setup.ps1 started: 08/23/2026 11:41:16 ===
+Removing existing venv at C:\Users\Public\Documents\Circulens\training\venv
+Removed OK
+=== Running setup_env.ps1 ===
+CircuLens venv setup starting...
+Python launcher: py -3.11
+Venv path: C:\Users\Public\Documents\Circulens\training\venv
+Python version: Python 3.11.6
+Creating venv at C:\Users\Public\Documents\Circulens\training\venv ...
+venv created OK
+Upgrading pip...
+Requirement already satisfied: pip in c:\users\public\documents\circulens\training\venv\lib\site-packages (23.2.1)
+Collecting pip
+  Obtaining dependency information for pip from https://files.pythonhosted.org/packages/f3/6e/1736e5b4ae2b778ef2f81c47d797de9f891d4d8acb047a24ca37a60294dd/pip-26.2.1-py3-none-any.whl.metadata
+  Using cached pip-26.2.1-py3-none-any.whl.metadata (4.6 kB)
+Using cached pip-26.2.1-py3-none-any.whl (1.8 MB)
+pip.exe : ERROR: To modify pip, please run the following command:
+At C:\Users\Public\Documents\Circulens\training\setup_env.ps1:32 char:1
++ & $pip install --upgrade pip
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (ERROR: To modif...lowing command::Stri 
+   ng) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+C:\Users\Public\Documents\Circulens\training\venv\Scripts\python.exe -m pip install 
+--upgrade pip
+
+[notice] A new release of pip is available: 23.2.1 -> 26.2.1
+[notice] To update, run: 
+C:\Users\Public\Documents\Circulens\training\venv\Scripts\python.exe -m pip install 
+--upgrade pip
+Installing torch + torchvision (CPU build)...
+Looking in indexes: https://download.pytorch.org/whl/cpu
+Collecting torch
+  Obtaining dependency information for torch from https://download-r2.pytorch.org/whl/cpu/torch-2.13.0%2Bcpu-cp311-cp311-win_amd64.whl.metadata
+  Using cached https://download-r2.pytorch.org/whl/cpu/torch-2.13.0%2Bcpu-cp311-cp311-win_amd64.whl.metadata (39 kB)
+Collecting torchvision
+  Obtaining dependency information for torchvision from https://download-r2.pytorch.org/whl/cpu/torchvision-0.28.0%2Bcpu-cp311-cp311-win_amd64.whl.metadata
+  Using cached https://download-r2.pytorch.org/whl/cpu/torchvision-0.28.0%2Bcpu-cp311-cp311-win_amd64.whl.metadata (5.7 kB)
+Collecting filelock (from torch)
+  Obtaining dependency information for filelock from https://files.pythonhosted.org/packages/a7/8e/50f46a9c0ce8d2861a394c1347caae037ea0431d2f67d7feb151cbc4649a/filelock-3.32.3-py3-none-any.whl.metadata
+  Using cached filelock-3.32.3-py3-none-any.whl.metadata (2.0 kB)
+Collecting typing-extensions>=4.10.0 (from torch)
+  Obtaining dependency information for typing-extensions>=4.10.0 from https://files.pythonhosted.org/packages/49/d3/b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80/typing_extensions-4.16.0-py3-none-any.whl.metadata
+  Using cached typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting setuptools>=77.0.3 (from torch)
+  Obtaining dependency information for setuptools>=77.0.3 from https://download.pytorch.org/whl/setuptools-78.1.0-py3-none-any.whl.metadata
+  Using cached https://download.pytorch.org/whl/setuptools-78.1.0-py3-none-any.whl.metadata (6.6 kB)
+Collecting sympy>=1.13.3 (from torch)
+  Obtaining dependency information for sympy>=1.13.3 from https://files.pythonhosted.org/packages/a2/09/77d55d46fd61b4a135c444fc97158ef34a095e5681d0a6c10b75bf356191/sympy-1.14.0-py3-none-any.whl.metadata
+  Using cached sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
+Collecting networkx>=2.5.1 (from torch)
+  Obtaining dependency information for networkx>=2.5.1 from https://files.pythonhosted.org/packages/9e/c9/b2622292ea83fbb4ec318f5b9ab867d0a28ab43c5717bb85b0a5f6b3b0a4/networkx-3.6.1-py3-none-any.whl.metadata
+  Using cached networkx-3.6.1-py3-none-any.whl.metadata (6.8 kB)
+Collecting jinja2 (from torch)
+  Obtaining dependency information for jinja2 from https://download.pytorch.org/whl/jinja2-3.1.6-py3-none-any.whl.metadata
+  Using cached https://download.pytorch.org/whl/jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Collecting fsspec>=0.8.5 (from torch)
+  Obtaining dependency information for fsspec>=0.8.5 from https://files.pythonhosted.org/packages/fd/3c/6a2bf344106328fd04963664a60b9bb6496fc25df8e962fcdc1367285fb9/fsspec-2026.7.0-py3-none-any.whl.metadata
+  Using cached fsspec-2026.7.0-py3-none-any.whl.metadata (10 kB)
+Collecting numpy (from torchvision)
+  Obtaining dependency information for numpy from https://files.pythonhosted.org/packages/c5/31/7fc6239c12bce7e931463251cca4426c465e1876ba3cc785402ef4dd8f4e/numpy-2.4.6-cp311-cp311-win_amd64.whl.metadata
+  Using cached numpy-2.4.6-cp311-cp311-win_amd64.whl.metadata (6.6 kB)
+Collecting pillow!=8.3.*,>=5.3.0 (from torchvision)
+  Obtaining dependency information for pillow!=8.3.*,>=5.3.0 from https://files.pythonhosted.org/packages/63/c6/4bad1b18d132a50b27e1365e1ab163616f7a5bb56d330f66f9d1d9d4f9d4/pillow-12.3.0-cp311-cp311-win_amd64.whl.metadata
+  Using cached pillow-12.3.0-cp311-cp311-win_amd64.whl.metadata (9.3 kB)
+Collecting mpmath<1.4,>=1.1.0 (from sympy>=1.13.3->torch)
+  Obtaining dependency information for mpmath<1.4,>=1.1.0 from https://files.pythonhosted.org/packages/43/e3/7d92a15f894aa0c9c4b49b8ee9ac9850d6e63b03c9c32c0367a13ae62209/mpmath-1.3.0-py3-none-any.whl.metadata
+  Using cached mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+Collecting MarkupSafe>=2.0 (from jinja2->torch)
+  Obtaining dependency information for MarkupSafe>=2.0 from https://download.pytorch.org/whl/markupsafe-3.0.3-cp311-cp311-win_amd64.whl.metadata
+  Using cached https://download.pytorch.org/whl/markupsafe-3.0.3-cp311-cp311-win_amd64.whl.metadata (2.8 kB)
+Using cached https://download-r2.pytorch.org/whl/cpu/torch-2.13.0%2Bcpu-cp311-cp311-win_amd64.whl (121.9 MB)
+Using cached https://download-r2.pytorch.org/whl/cpu/torchvision-0.28.0%2Bcpu-cp311-cp311-win_amd64.whl (3.8 MB)
+Using cached fsspec-2026.7.0-py3-none-any.whl (206 kB)
+Using cached networkx-3.6.1-py3-none-any.whl (2.1 MB)
+Using cached pillow-12.3.0-cp311-cp311-win_amd64.whl (7.2 MB)
+Using cached https://download.pytorch.org/whl/setuptools-78.1.0-py3-none-any.whl (1.3 MB)
+Using cached sympy-1.14.0-py3-none-any.whl (6.3 MB)
+Using cached typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Using cached filelock-3.32.3-py3-none-any.whl (98 kB)
+Using cached https://download.pytorch.org/whl/jinja2-3.1.6-py3-none-any.whl (134 kB)
+Using cached numpy-2.4.6-cp311-cp311-win_amd64.whl (12.6 MB)
+Using cached https://download.pytorch.org/whl/markupsafe-3.0.3-cp311-cp311-win_amd64.whl (15 kB)
+Using cached mpmath-1.3.0-py3-none-any.whl (536 kB)
+Installing collected packages: mpmath, typing-extensions, sympy, setuptools, pillow, numpy, networkx, MarkupSafe, fsspec, filelock, jinja2, torch, torchvision
+  Attempting uninstall: setuptools
+    Found existing installation: setuptools 65.5.0
+    Uninstalling setuptools-65.5.0:
+      Successfully uninstalled setuptools-65.5.0
+Successfully installed MarkupSafe-3.0.3 filelock-3.32.3 fsspec-2026.7.0 jinja2-3.1.6 mpmath-1.3.0 networkx-3.6.1 numpy-2.4.6 pillow-12.3.0 setuptools-78.1.0 sympy-1.14.0 torch-2.13.0+cpu torchvision-0.28.0+cpu typing-extensions-4.16.0
+pip.exe : 
+At C:\Users\Public\Documents\Circulens\training\setup_env.ps1:35 char:1
++ & $pip install torch torchvision --index-url https://download.pytorch ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[notice] A new release of pip is available: 23.2.1 -> 26.2.1
+[notice] To update, run: 
+C:\Users\Public\Documents\Circulens\training\venv\Scripts\python.exe -m pip install 
+--upgrade pip
+Installing Pillow numpy scikit-learn matplotlib...
+Requirement already satisfied: Pillow in c:\users\public\documents\circulens\training\venv\lib\site-packages (12.3.0)
+Requirement already satisfied: numpy in c:\users\public\documents\circulens\training\venv\lib\site-packages (2.4.6)
+Collecting scikit-learn
+  Obtaining dependency information for scikit-learn from https://files.pythonhosted.org/packages/3b/67/be3d369f40d8178ba3bd86635d132e08cb5329b023e4669d9426d84bc007/scikit_learn-1.9.0-cp311-cp311-win_amd64.whl.metadata
+  Downloading scikit_learn-1.9.0-cp311-cp311-win_amd64.whl.metadata (11 kB)
+Collecting matplotlib
+  Obtaining dependency information for matplotlib from https://files.pythonhosted.org/packages/bc/be/fa26ed085b41298f64a8f9b7592c671bbf1acc8b0df124c1c5de96b859f8/matplotlib-3.11.1-cp311-cp311-win_amd64.whl.metadata
+  Downloading matplotlib-3.11.1-cp311-cp311-win_amd64.whl.metadata (80 kB)
+     ---------------------------------------- 80.3/80.3 kB 4.7 MB/s eta 0:00:00
+Collecting scipy>=1.10.0 (from scikit-learn)
+  Obtaining dependency information for scipy>=1.10.0 from https://files.pythonhosted.org/packages/95/da/0d1df507cf574b3f224ccc3d45244c9a1d732c81dcb26b1e8a766ae271a8/scipy-1.17.1-cp311-cp311-win_amd64.whl.metadata
+  Downloading scipy-1.17.1-cp311-cp311-win_amd64.whl.metadata (60 kB)
+     ---------------------------------------- 61.0/61.0 kB 3.4 MB/s eta 0:00:00
+Collecting joblib>=1.4.0 (from scikit-learn)
+  Obtaining dependency information for joblib>=1.4.0 from https://files.pythonhosted.org/packages/7b/91/984aca2ec129e2757d1e4e3c81c3fcda9d0f85b74670a094cc443d9ee949/joblib-1.5.3-py3-none-any.whl.metadata
+  Downloading joblib-1.5.3-py3-none-any.whl.metadata (5.5 kB)
+Collecting narwhals>=2.0.1 (from scikit-learn)
+  Obtaining dependency information for narwhals>=2.0.1 from https://files.pythonhosted.org/packages/eb/dc/55481808fd70ef1567cf13540ffd4702af3f74b112e35427564b03f79c2d/narwhals-2.25.0-py3-none-any.whl.metadata
+  Downloading narwhals-2.25.0-py3-none-any.whl.metadata (15 kB)
+Collecting threadpoolctl>=3.5.0 (from scikit-learn)
+  Obtaining dependency information for threadpoolctl>=3.5.0 from https://files.pythonhosted.org/packages/32/d5/f9a850d79b0851d1d4ef6456097579a9005b31fea68726a4ae5f2d82ddd9/threadpoolctl-3.6.0-py3-none-any.whl.metadata
+  Downloading threadpoolctl-3.6.0-py3-none-any.whl.metadata (13 kB)
+Collecting contourpy>=1.0.1 (from matplotlib)
+  Obtaining dependency information for contourpy>=1.0.1 from https://files.pythonhosted.org/packages/98/4b/9bd370b004b5c9d8045c6c33cf65bae018b27aca550a3f657cdc99acdbd8/contourpy-1.3.3-cp311-cp311-win_amd64.whl.metadata
+  Downloading contourpy-1.3.3-cp311-cp311-win_amd64.whl.metadata (5.5 kB)
+Collecting cycler>=0.10 (from matplotlib)
+  Obtaining dependency information for cycler>=0.10 from https://files.pythonhosted.org/packages/e7/05/c19819d5e3d95294a6f5947fb9b9629efb316b96de511b418c53d245aae6/cycler-0.12.1-py3-none-any.whl.metadata
+  Downloading cycler-0.12.1-py3-none-any.whl.metadata (3.8 kB)
+Collecting fonttools>=4.28.2 (from matplotlib)
+  Obtaining dependency information for fonttools>=4.28.2 from https://files.pythonhosted.org/packages/08/60/defa5e69641db890a63be281f41345f4c33b157824eaf0b9fad3e08b0dcb/fonttools-4.63.0-cp311-cp311-win_amd64.whl.metadata
+  Downloading fonttools-4.63.0-cp311-cp311-win_amd64.whl.metadata (121 kB)
+     -------------------------------------- 121.0/121.0 kB 3.6 MB/s eta 0:00:00
+Collecting kiwisolver>=1.3.1 (from matplotlib)
+  Obtaining dependency information for kiwisolver>=1.3.1 from https://files.pythonhosted.org/packages/be/6c/28f17390b62b8f2f520e2915095b3c94d88681ecf0041e75389d9667f202/kiwisolver-1.5.0-cp311-cp311-win_amd64.whl.metadata
+  Downloading kiwisolver-1.5.0-cp311-cp311-win_amd64.whl.metadata (5.2 kB)
+Collecting packaging>=20.0 (from matplotlib)
+  Obtaining dependency information for packaging>=20.0 from https://files.pythonhosted.org/packages/63/34/ba1c580383c9eada3711951fef0795c80b829a078d72188184bcab9dd527/packaging-26.3-py3-none-any.whl.metadata
+  Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Collecting pyparsing>=3 (from matplotlib)
+  Obtaining dependency information for pyparsing>=3 from https://files.pythonhosted.org/packages/10/bd/c038d7cc38edc1aa5bf91ab8068b63d4308c66c4c8bb3cbba7dfbc049f9c/pyparsing-3.3.2-py3-none-any.whl.metadata
+  Downloading pyparsing-3.3.2-py3-none-any.whl.metadata (5.8 kB)
+Collecting python-dateutil>=2.7 (from matplotlib)
+  Obtaining dependency information for python-dateutil>=2.7 from https://files.pythonhosted.org/packages/ec/57/56b9bcc3c9c6a792fcbaf139543cee77261f3651ca9da0c93f5c1221264b/python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata
+  Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting six>=1.5 (from python-dateutil>=2.7->matplotlib)
+  Obtaining dependency information for six>=1.5 from https://files.pythonhosted.org/packages/b7/ce/149a00dd41f10bc29e5921b496af8b574d8413afcd5e30dfa0ed46c2cc5e/six-1.17.0-py2.py3-none-any.whl.metadata
+  Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Downloading scikit_learn-1.9.0-cp311-cp311-win_amd64.whl (8.3 MB)
+   ---------------------------------------- 8.3/8.3 MB 6.4 MB/s eta 0:00:00
+Downloading matplotlib-3.11.1-cp311-cp311-win_amd64.whl (9.3 MB)
+   ---------------------------------------- 9.3/9.3 MB 6.5 MB/s eta 0:00:00
+Downloading contourpy-1.3.3-cp311-cp311-win_amd64.whl (225 kB)
+   ---------------------------------------- 225.2/225.2 kB 4.6 MB/s eta 0:00:00
+Downloading cycler-0.12.1-py3-none-any.whl (8.3 kB)
+Downloading fonttools-4.63.0-cp311-cp311-win_amd64.whl (2.4 MB)
+   ---------------------------------------- 2.4/2.4 MB 6.5 MB/s eta 0:00:00
+Downloading joblib-1.5.3-py3-none-any.whl (309 kB)
+   ---------------------------------------- 309.1/309.1 kB 6.5 MB/s eta 0:00:00
+Downloading kiwisolver-1.5.0-cp311-cp311-win_amd64.whl (73 kB)
+   ---------------------------------------- 73.5/73.5 kB 4.0 MB/s eta 0:00:00
+Downloading narwhals-2.25.0-py3-none-any.whl (467 kB)
+   ---------------------------------------- 467.4/467.4 kB 5.9 MB/s eta 0:00:00
+Downloading packaging-26.3-py3-none-any.whl (129 kB)
+   ---------------------------------------- 130.0/130.0 kB 3.9 MB/s eta 0:00:00
+Downloading pyparsing-3.3.2-py3-none-any.whl (122 kB)
+   ---------------------------------------- 122.8/122.8 kB 7.5 MB/s eta 0:00:00
+Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+   ---------------------------------------- 229.9/229.9 kB 7.1 MB/s eta 0:00:00
+Downloading scipy-1.17.1-cp311-cp311-win_amd64.whl (36.6 MB)
+   ---------------------------------------- 36.6/36.6 MB 4.9 MB/s eta 0:00:00
+Downloading threadpoolctl-3.6.0-py3-none-any.whl (18 kB)
+Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+Installing collected packages: threadpoolctl, six, scipy, pyparsing, packaging, narwhals, kiwisolver, joblib, fonttools, cycler, contourpy, scikit-learn, python-dateutil, matplotlib
+Successfully installed contourpy-1.3.3 cycler-0.12.1 fonttools-4.63.0 joblib-1.5.3 kiwisolver-1.5.0 matplotlib-3.11.1 narwhals-2.25.0 packaging-26.3 pyparsing-3.3.2 python-dateutil-2.9.0.post0 scikit-learn-1.9.0 scipy-1.17.1 six-1.17.0 threadpoolctl-3.6.0
+pip.exe : 
+At C:\Users\Public\Documents\Circulens\training\setup_env.ps1:38 char:1
++ & $pip install Pillow numpy scikit-learn matplotlib
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[notice] A new release of pip is available: 23.2.1 -> 26.2.1
+[notice] To update, run: 
+C:\Users\Public\Documents\Circulens\training\venv\Scripts\python.exe -m pip install 
+--upgrade pip
+
+Installed packages:
+Package           Version
+----------------- -----------
+contourpy         1.3.3
+cycler            0.12.1
+filelock          3.32.3
+fonttools         4.63.0
+fsspec            2026.7.0
+Jinja2            3.1.6
+joblib            1.5.3
+kiwisolver        1.5.0
+MarkupSafe        3.0.3
+matplotlib        3.11.1
+mpmath            1.3.0
+narwhals          2.25.0
+networkx          3.6.1
+numpy             2.4.6
+packaging         26.3
+pillow            12.3.0
+pip               23.2.1
+pyparsing         3.3.2
+python-dateutil   2.9.0.post0
+scikit-learn      1.9.0
+scipy             1.17.1
+setuptools        78.1.0
+six               1.17.0
+sympy             1.14.0
+threadpoolctl     3.6.0
+torch             2.13.0+cpu
+torchvision       0.28.0+cpu
+typing_extensions 4.16.0
+pip.exe : 
+At C:\Users\Public\Documents\Circulens\training\setup_env.ps1:42 char:1
++ & $pip list
++ ~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[notice] A new release of pip is available: 23.2.1 -> 26.2.1
+[notice] To update, run: 
+C:\Users\Public\Documents\Circulens\training\venv\Scripts\python.exe -m pip install 
+--upgrade pip
+
+SETUP COMPLETE
+Next: run training\run_validate.ps1 to validate the data loader
+=== run_setup.ps1 finished: 08/23/2026 12:09:02 ===

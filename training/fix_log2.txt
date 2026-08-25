@@ -1,0 +1,9 @@
+﻿=== VC++ Redistributable Download (Retry) ===
+Removing partial download (3450934 bytes)
+Attempt 1 of 3...
+Downloaded 25635768 bytes
+Download successful!
+Installing VC++ Redistributable...
+Exit code: 1602
+WARNING: Unexpected exit code 1602
+=== DONE ===
