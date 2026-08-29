@@ -1,4 +1,5 @@
 import type { AIResult } from '../services/aiService'
+import { formatIDR } from '../services/aiService'
 
 interface ScenariosProps {
   result: AIResult | null
@@ -9,146 +10,170 @@ interface ScenariosProps {
 }
 
 export default function Scenarios({ result, batchName, onBack, onSelectPathway, onSaveBatch }: ScenariosProps) {
-  const options = result?.scenarioOptions ?? [
-    { label: 'Jual Sekarang',        icon: '🛒', estimatedValueRetained: 60, timeframe: 'Hari ini',  pros: ['Nilai tunai segera'],              cons: ['Harga di bawah optimal'],  recommended: false },
-    { label: 'Simpan + Monitor',     icon: '❄️', estimatedValueRetained: 75, timeframe: '1–2 hari',  pros: ['Nilai lebih tinggi'],              cons: ['Biaya penyimpanan'],       recommended: true  },
-    { label: 'Olah Menjadi Produk',  icon: '🏭', estimatedValueRetained: 55, timeframe: '2–3 hari',  pros: ['Eliminasi risiko pembusukan'],    cons: ['Perlu fasilitas'],         recommended: false },
-  ]
+  const options = result?.scenarioOptions ?? defaultOptions
+  const mp = result?.marketPrice
 
   return (
     <main className="flex-1 p-md md:p-xl overflow-y-auto">
 
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-md mb-xl flex-wrap">
+      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-md mb-xl">
         <div>
-          <h2 className="text-headline-lg font-bold text-on-surface mb-xs">Skenario & Perbandingan</h2>
-          <p className="text-body-md text-secondary">
-            {batchName ? `Batch: ${batchName} · ` : ''}
-            Bandingkan jalur penanganan dan estimasi hasil.
-          </p>
+          <p className="cl-label text-secondary mb-xs">Scenario Intelligence</p>
+          <h1 className="cl-display text-on-surface">What-If Comparison</h1>
+          {batchName && <p className="text-body-md text-secondary mt-xs">{batchName}</p>}
         </div>
-        <div className="flex gap-sm flex-wrap">
-          <button
-            onClick={onBack}
-            className="border border-outline-variant px-lg py-sm rounded-full text-body-sm font-semibold text-on-surface hover:bg-surface-container-low transition-colors flex items-center gap-xs"
-          >
-            <span className="material-symbols-outlined text-sm">arrow_back</span>
-            Kembali
-          </button>
-        </div>
+        <button onClick={onBack}
+          className="flex items-center gap-xs border border-outline-variant px-lg py-sm rounded-full text-body-sm font-semibold text-on-surface hover:bg-surface-container-low transition-colors shrink-0">
+          <span className="material-symbols-outlined text-sm">arrow_back</span>Kembali
+        </button>
       </div>
 
-      {/* Demo banner */}
-      <div className="bg-amber-50 border border-amber-200 rounded-DEFAULT px-lg py-sm mb-lg flex items-center gap-sm">
-        <span>⚗️</span>
-        <p className="text-body-sm text-amber-800 font-medium">
-          Prototype AI — Estimasi adalah prediksi demo. Bukan saran keuangan atau pertanian profesional.
+      {/* Demo + market price note */}
+      <div className="flex items-center gap-sm bg-amber-50 border border-amber-200 rounded-2xl px-lg py-sm mb-lg">
+        <span className="shrink-0">⚗️</span>
+        <p className="text-body-sm text-amber-800 font-semibold">
+          Prototype AI — Estimasi demo.{' '}
+          <span className="font-normal">Bukan saran keuangan atau pertanian profesional.
+          {mp && ` Referensi harga: ${formatIDR(mp.pricePerKg)}/kg (${mp.source}, ${mp.lastUpdated}).`}
+          </span>
         </p>
       </div>
 
-      {/* Scenario cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-lg mb-xl">
-        {options.map(opt => (
-          <div
-            key={opt.label}
-            className={`rounded-DEFAULT p-lg flex flex-col gap-md shadow-sm border-2 relative
-              ${opt.recommended ? 'border-primary bg-primary/5' : 'border-outline-variant bg-surface-container-lowest'}`}
-          >
-            {opt.recommended && (
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                <span className="bg-primary text-on-primary text-[10px] font-bold px-3 py-1 rounded-full shadow">
-                  ✅ Direkomendasikan AI
+      {/* Sell vs Store quick comparison */}
+      <div className="cl-card mb-lg">
+        <p className="cl-label text-secondary mb-sm">Quick Comparison</p>
+        <h3 className="cl-title text-on-surface mb-md">Jual Sekarang vs Simpan + Monitor</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-md">
+          {options.slice(0, 2).map(opt => (
+            <div key={opt.label}
+              className={`rounded-2xl p-lg border-2 ${opt.recommended ? 'border-primary bg-primary/5' : 'border-outline-variant bg-surface-container-low'}`}>
+              <div className="flex items-center gap-sm mb-md">
+                <span className="text-2xl">{opt.icon}</span>
+                <div>
+                  <p className="cl-label text-secondary">{opt.recommended ? '✅ Direkomendasikan' : 'Alternatif'}</p>
+                  <p className="cl-title text-on-surface">{opt.label}</p>
+                </div>
+              </div>
+              {/* Value bar */}
+              <div className="mb-md">
+                <div className="flex justify-between mb-xs">
+                  <p className="cl-label text-secondary">Nilai terjaga</p>
+                  <p className="text-body-lg font-black text-on-surface">{opt.estimatedValueRetained}%</p>
+                </div>
+                <div className="cl-progress-track">
+                  <div className={`cl-progress-fill ${opt.recommended ? 'bg-primary' : 'bg-secondary-container'}`}
+                    style={{ width: `${opt.estimatedValueRetained}%` }} />
+                </div>
+              </div>
+              {/* Consequence */}
+              <p className="text-body-sm text-secondary italic mb-md border-l-2 border-primary/40 pl-sm">
+                {opt.consequence}
+              </p>
+              <p className="cl-label text-secondary mb-sm">Waktu: <span className="text-on-surface font-semibold">{opt.timeframe}</span></p>
+              <div className="flex flex-col gap-xs mb-md">
+                {opt.pros.map(p => (
+                  <div key={p} className="flex gap-xs text-body-sm">
+                    <span className="text-green-600 font-bold shrink-0">+</span>
+                    <span className="text-secondary">{p}</span>
+                  </div>
+                ))}
+                {opt.cons.map(c => (
+                  <div key={c} className="flex gap-xs text-body-sm">
+                    <span className="text-red-500 font-bold shrink-0">−</span>
+                    <span className="text-secondary">{c}</span>
+                  </div>
+                ))}
+              </div>
+              <button
+                onClick={() => { onSaveBatch(opt.label); onSelectPathway(opt.label) }}
+                className={`w-full py-sm rounded-full text-body-sm font-bold transition-all flex items-center justify-center gap-xs
+                  ${opt.recommended ? 'bg-primary text-on-primary hover:bg-primary/90' : 'border border-outline-variant text-on-surface hover:bg-surface-container-low'}`}>
+                <span className="material-symbols-outlined text-sm">save</span>
+                Pilih & Simpan
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* All scenarios */}
+      <div className="cl-card mb-lg">
+        <p className="cl-label text-secondary mb-sm">Semua Opsi</p>
+        <h3 className="cl-title text-on-surface mb-lg">Perbandingan Lengkap</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-md">
+          {options.map(opt => (
+            <div key={opt.label}
+              className={`relative rounded-2xl p-md flex flex-col gap-sm border-2 ${opt.recommended ? 'border-primary bg-primary/5' : 'border-outline-variant bg-surface-container-low'}`}>
+              {opt.recommended && (
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-on-primary cl-label px-3 py-1 rounded-full shadow whitespace-nowrap">
+                  ✅ AI Pick
                 </span>
+              )}
+              <div className="flex items-center gap-sm mt-1">
+                <span className="text-2xl">{opt.icon}</span>
+                <p className="text-body-sm font-bold text-on-surface">{opt.label}</p>
               </div>
-            )}
-
-            <div className="flex items-center gap-sm mt-2">
-              <div className="w-10 h-10 rounded-DEFAULT bg-surface-container-low flex items-center justify-center text-xl shrink-0">{opt.icon}</div>
               <div>
-                <p className="text-body-sm text-secondary">Skenario</p>
-                <p className="text-body-md font-bold text-on-surface">{opt.label}</p>
-              </div>
-            </div>
-
-            {/* Value bar */}
-            <div>
-              <div className="flex justify-between mb-xs">
-                <span className="text-label-md text-secondary">Estimasi nilai terjaga</span>
-                <span className="text-headline-sm font-bold text-on-surface">{opt.estimatedValueRetained}%</span>
-              </div>
-              <div className="h-2.5 bg-surface-container rounded-full overflow-hidden">
-                <div
-                  className={`h-full rounded-full ${opt.recommended ? 'bg-primary' : 'bg-secondary-container'}`}
-                  style={{ width: `${opt.estimatedValueRetained}%` }}
-                />
-              </div>
-            </div>
-
-            <div className="text-body-sm">
-              <span className="text-secondary">Waktu: </span>
-              <span className="font-semibold text-on-surface">{opt.timeframe}</span>
-            </div>
-
-            <div className="flex flex-col gap-xs border-t border-outline-variant pt-md">
-              {opt.pros.map(p => (
-                <div key={p} className="flex gap-xs text-body-sm">
-                  <span className="text-green-500 font-bold shrink-0">+</span>
-                  <span className="text-secondary">{p}</span>
+                <div className="flex justify-between mb-xs">
+                  <p className="cl-label text-secondary">Nilai</p>
+                  <p className="text-body-md font-black text-on-surface">{opt.estimatedValueRetained}%</p>
                 </div>
-              ))}
-              {opt.cons.map(c => (
-                <div key={c} className="flex gap-xs text-body-sm">
-                  <span className="text-red-400 font-bold shrink-0">−</span>
-                  <span className="text-secondary">{c}</span>
+                <div className="cl-progress-track">
+                  <div className={`cl-progress-fill ${opt.recommended ? 'bg-primary' : 'bg-secondary-container'}`}
+                    style={{ width: `${opt.estimatedValueRetained}%` }} />
                 </div>
-              ))}
+              </div>
+              <p className="cl-label text-secondary">{opt.timeframe}</p>
+              <p className="text-[11px] text-secondary italic leading-relaxed">{opt.consequence}</p>
+              <button
+                onClick={() => { onSaveBatch(opt.label); onSelectPathway(opt.label) }}
+                className={`mt-auto w-full py-xs rounded-full text-body-sm font-semibold transition-colors flex items-center justify-center gap-xs
+                  ${opt.recommended ? 'bg-primary text-on-primary' : 'border border-outline-variant text-on-surface hover:bg-surface-container-lowest'}`}>
+                <span className="material-symbols-outlined text-sm">save</span>
+                Pilih
+              </button>
             </div>
-
-            <button
-              onClick={() => { onSaveBatch(opt.label); onSelectPathway(opt.label) }}
-              className={`w-full mt-auto py-sm rounded-full text-body-sm font-semibold transition-colors flex items-center justify-center gap-xs
-                ${opt.recommended
-                  ? 'bg-primary text-on-primary hover:bg-primary/90'
-                  : 'border border-outline-variant text-on-surface hover:bg-surface-container-low'}`}
-            >
-              <span className="material-symbols-outlined text-sm">save</span>
-              Pilih & Simpan
-            </button>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
       {/* Circular pathway */}
-      <div className="bg-surface-container-lowest border border-outline-variant rounded-DEFAULT p-lg shadow-sm mb-lg">
-        <h3 className="text-headline-sm font-semibold text-on-surface mb-md">Jalur Sirkular</h3>
+      <div className="cl-card">
+        <p className="cl-label text-secondary mb-sm">Circular Economy</p>
+        <h3 className="cl-title text-on-surface mb-lg">Jalur Sirkular</h3>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-md">
           {[
-            { label: 'Jual',     icon: '🛒', desc: 'Pasar segar atau distributor',   recommended: false },
-            { label: 'Olah',     icon: '🏭', desc: 'Pasta, saus, produk kering',    recommended: true  },
-            { label: 'Simpan',   icon: '❄️', desc: 'Cold storage, perpanjang umur', recommended: false },
-            { label: 'Redirect', icon: '↗️', desc: 'Alihkan ke pasar alternatif',   recommended: false },
-            { label: 'Kompos',   icon: '♻️', desc: 'Minimal loss recovery',         recommended: false },
+            { label: 'Jual',     icon: '🛒', desc: 'Pasar segar / distributor',   rec: false },
+            { label: 'Olah',     icon: '🏭', desc: 'Pasta, saus, produk kering',  rec: true  },
+            { label: 'Simpan',   icon: '❄️', desc: 'Cold storage, perpanjang umur', rec: false },
+            { label: 'Redirect', icon: '↗️', desc: 'Pasar horeca / alternatif',   rec: false },
+            { label: 'Kompos',   icon: '♻️', desc: 'Input pertanian organik',     rec: false },
           ].map(p => (
-            <button
-              key={p.label}
+            <button key={p.label}
               onClick={() => { onSaveBatch(p.label); onSelectPathway(p.label) }}
-              className={`flex flex-col items-center gap-sm p-md rounded-DEFAULT transition-all hover:-translate-y-1 duration-150 border text-center
-                ${p.recommended ? 'border-primary bg-primary/5' : 'border-outline-variant bg-surface-container-low hover:border-primary'}`}
-            >
-              <span className="text-2xl">{p.icon}</span>
-              <span className="text-body-sm font-bold text-on-surface">{p.label}</span>
-              <span className="text-[11px] text-secondary">{p.desc}</span>
-              {p.recommended && (
-                <span className="text-[9px] bg-primary text-on-primary px-2 py-0.5 rounded-full font-bold">Direkomendasikan</span>
-              )}
+              className={`flex flex-col items-center gap-sm p-md rounded-2xl border-2 transition-all hover:-translate-y-1 text-center
+                ${p.rec ? 'border-primary bg-primary/5' : 'border-outline-variant bg-surface-container-low hover:border-primary'}`}>
+              <span className="text-3xl">{p.icon}</span>
+              <p className="text-body-sm font-bold text-on-surface">{p.label}</p>
+              <p className="text-[11px] text-secondary">{p.desc}</p>
+              {p.rec && <span className="cl-label bg-primary text-on-primary px-2 py-0.5 rounded-full">Recommended</span>}
             </button>
           ))}
         </div>
       </div>
 
-      <p className="text-body-sm font-bold text-primary italic text-center">
+      <p className="text-body-sm font-bold text-primary italic text-center mt-lg">
         "CircuLens recommends. You decide."
       </p>
     </main>
   )
 }
+
+const defaultOptions = [
+  { label: 'Jual Sekarang',       icon: '🛒', estimatedValueRetained: 62, estimatedLossPercent: 38, timeframe: 'Hari ini',  pros: ['Nilai tunai segera'], cons: ['Harga sub-optimal'], consequence: 'Batch terjual hari ini ~62% nilai.', recommended: false },
+  { label: 'Simpan + Monitor',    icon: '❄️', estimatedValueRetained: 78, estimatedLossPercent: 22, timeframe: '1–2 hari', pros: ['Nilai lebih tinggi'], cons: ['Biaya storage'],      consequence: 'Nilai ~78% jika suhu terjaga.',   recommended: true  },
+  { label: 'Olah Menjadi Produk', icon: '🏭', estimatedValueRetained: 55, estimatedLossPercent: 45, timeframe: '2–4 hari', pros: ['Tanpa risiko busuk'],  cons: ['Perlu fasilitas'],   consequence: 'Produk olahan nilai stabil ~55%.', recommended: false },
+  { label: 'Redirect',            icon: '↗️', estimatedValueRetained: 68, estimatedLossPercent: 32, timeframe: 'Besok',    pros: ['Pasar horeca'],        cons: ['Perlu jaringan'],    consequence: 'Dijual ke horeca ~68%.',           recommended: false },
+  { label: 'Kompos',              icon: '♻️', estimatedValueRetained: 5,  estimatedLossPercent: 95, timeframe: 'Segera',   pros: ['Cegah kontaminasi'],   cons: ['Loss hampir total'], consequence: 'Nilai hampir nol, input pertanian.', recommended: false },
+]
